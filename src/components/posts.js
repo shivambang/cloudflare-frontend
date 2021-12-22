@@ -7,7 +7,11 @@ const Posts = () => {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    const interval = setInterval(() => (
+    fetch("https://twitter-api.shivambang.workers.dev/posts")
+    .then(resp => 
+      resp.json()
+      .then(pr => setPosts(pr)))
+  const interval = setInterval(() => (
       fetch("https://twitter-api.shivambang.workers.dev/posts")
       .then(resp => 
         resp.json()
