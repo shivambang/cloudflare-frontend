@@ -56,7 +56,8 @@ const Posts = () => {
       </div>
       {console.log(posts)}
       <h2>Popular</h2>
-      {posts.map((post) => ( post != null && 
+      {posts.sort((a, b) => a.votes < b.votes ? 1 : -1)
+      .map((post) => ( post != null && 
           <div class="card m-3 p-3" key={post.id}>
             <h5 class="card-header">{post.uid}</h5>
             <div class="card-body">
@@ -151,7 +152,7 @@ const Posts = () => {
               ))}
             </div>
           </div>        
-      )).sort((a, b) => a.votes > b.votes ? 1 : -1)}
+      ))}
     </div>
   );
 };
